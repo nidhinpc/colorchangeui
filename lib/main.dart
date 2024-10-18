@@ -1,5 +1,7 @@
 import 'package:colorchange/controller/home_screen_controller.dart';
-import 'package:colorchange/view/home_screen/home_screen.dart';
+import 'package:colorchange/controller/second_screen.dart';
+
+import 'package:colorchange/view/second_screen/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,10 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => HomeScreenController(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => HomeScreenController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SecondScreenController(),
+        )
+      ],
       child: MaterialApp(
-        home: HomeScreen(),
+        home: HomeScreen1(),
       ),
     );
   }
